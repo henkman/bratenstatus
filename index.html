@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      table {
+        min-width: 300px;
+        max-width: 800px;
+        background-color: #eee;
+        border-collapse: collapse;
+        border: 1px solid;
+      }
+      table th {
+        background-color: #000;
+        color: white;
+        width: 50%;
+      }
+      table td,
+      table th {
+        padding: 5px;
+        border: 1px solid #000;
+      }
+      p span {
+        font-weight: 800;
+      }
+    </style>
+    <title>Bratenstatus</title>
+  </head>
+  <body>
+    <h1>{{.Description}}</h1>
+    <p>Mode: <span>{{.Mode}}</span></p>
+    <p>Map: <span>{{.Map}}</span></p>
+    <p>MaxClients: <span>{{.MaxClients}}</span></p>
+    <p>Seconds Left: <span>{{.SecsLeft}}</span></p>
+    {{if .Clients}}
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>ID</th>
+          <th>IP</th>
+          <th>Frags</th>
+          <th>Deaths</th>
+          <th>Teamkills</th>
+          <th>Accuracy %</th>
+          <th>Health</th>
+          <th>Weapon</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{range .Clients}}
+        <tr>
+          <td>{{.Name}}</td>
+          <td>{{.ID}}</td>
+          <td>{{.IP}}</td>
+          <td>{{.Frags}}</td>
+          <td>{{.Deaths}}</td>
+          <td>{{.Teamkills}}</td>
+          <td>{{.Accuracy}}</td>
+          <td>{{.Health}}</td>
+          <td>{{.Weapon}}</td>
+        </tr>
+        {{end}}
+      </tbody>
+    </table>
+    {{else}}
+    <h2>keiner da!</h2>
+    {{end}}
+  </body>
+</html>
